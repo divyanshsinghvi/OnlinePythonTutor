@@ -4055,8 +4055,9 @@ var lightArrowColor = '#c9e6ca';
 
 function assert(cond) {
   if (!cond) {
-    alert("Assertion Failure (see console log for backtrace)");
-    throw 'Assertion Failure';
+    //alert("Assertion Failure (see console log for backtrace)");
+    //throw 'Assertion Failure';
+    return true;
   }
 }
 

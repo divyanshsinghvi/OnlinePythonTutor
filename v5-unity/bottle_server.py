@@ -18,8 +18,9 @@ except:
     import io as StringIO # py3
 import json
 import pg_logger
-
-
+from subprocess import call
+from run_cpp_backend import postprocess_stdout
+#from run_cpp_backend import ret
 @route('/web_exec_<name:re:.+>.py')
 @route('/LIVE_exec_<name:re:.+>.py')
 @route('/viz_interaction.py')
@@ -55,8 +56,14 @@ def get_py_exec():
                                   options['heap_primitives'],
                                   json_finalizer)
 
+  #return 'OK'
   return out_s.getvalue()
-
+@route('/web_exec_c.py')
+def c_exec():
+  out = StringIO.StringIO()
+  #out.write(ret) 
+  out.write(postprocess_stdout)
+  return out.getvalue()
 
 if __name__ == "__main__":
     run(host='localhost', port=8003, reloader=True)

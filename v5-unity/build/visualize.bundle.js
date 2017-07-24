@@ -21825,7 +21825,8 @@ var AbstractBaseFrontend = (function () {
             'ts': this.serverRoot + 'exec_ts_jsonp',
             'java': this.serverRoot + 'exec_java_jsonp',
             'ruby': this.serverRoot + 'exec_ruby_jsonp',
-            'c': this.serverRoot + 'exec_c_jsonp',
+            'c': null,
+	     //'c': this.serverRoot + 'exec_c_jsonp',
             'cpp': this.serverRoot + 'exec_cpp_jsonp',
         };
         // OMG nasty wtf?!?
@@ -22127,7 +22128,7 @@ var AbstractBaseFrontend = (function () {
         }
         else {
             // for Python 2 or 3, directly execute backendScript
-            pytutor_1.assert(pyState === '2' || pyState === '3');
+            pytutor_1.assert(pyState === '2' || pyState === '3' || pyState === 'c');
             $.get(backendScript, { user_script: codeToExec,
                 raw_input_json: this.rawInputLst.length > 0 ? JSON.stringify(this.rawInputLst) : '',
                 options_json: JSON.stringify(backendOptionsObj),
